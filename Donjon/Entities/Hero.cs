@@ -11,6 +11,9 @@ namespace Donjon.Entities
         public int X { get; set; }
         public int Y { get; set; }
 
-        public Hero() : base("☻", ConsoleColor.Cyan) { }
+        public Hero() : base("Hero", "☻", ConsoleColor.Cyan) {
+            Damage = 1;
+            Health = 5;
+        }
     }
 }

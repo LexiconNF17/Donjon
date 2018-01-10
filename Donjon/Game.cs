@@ -1,6 +1,7 @@
 ﻿
 using Donjon.Entities;
 using System;
+using System.Collections.Generic;
 
 namespace Donjon
 {
@@ -8,6 +9,7 @@ namespace Donjon
     {
         private Map map;
         private bool playing;
+        private List<string> log = new List<string>();
 
         public Game()
         {
@@ -22,11 +24,13 @@ namespace Donjon
 
         private void Initialize()
         {
-            map = new Map(width: 10, height: 10);
+            map = new Map(width: 10, height: 10, log: log);
             map.Hero = new Hero();
-
-
-
+            map.Cell(5, 8).Monster = Monster.Troll();
+            map.Cell(8, 5).Monster = Monster.Goblin();
+            map.Cell(4, 3).Monster = Monster.Goblin();
+            map.Cell(2, 3).Item = Item.Coin();
+            
             Console.OutputEncoding = System.Text.Encoding.UTF8;
         }
 
@@ -37,8 +41,16 @@ namespace Donjon
             while (playing)
             {
                 PlayerAction();
+                UpdateMap();
                 Draw();
+                if (map.Hero.Health <= 0) playing = false;
             }
+            Console.WriteLine("Game Over");
+        }
+
+        private void UpdateMap()
+        {
+            map.ClearDeadMonsters();
         }
 
         private void PlayerAction()
@@ -65,14 +77,8 @@ namespace Donjon
         }
 
         private void Move(int x, int y)
-        {            
-            var targetX = map.Hero.X + x;
-            var targetY = map.Hero.Y + y;
-
-            if (map.InvalidCell(targetX, targetY)) return;
-
-            map.Hero.X = targetX;
-            map.Hero.Y = targetY;
+        {
+            map.MoveHero(x, y);
         }
 
         private void Draw()
@@ -80,6 +86,12 @@ namespace Donjon
             Console.CursorVisible = false;
             Console.Clear();
             map.Draw();
+            Console.WriteLine($"Health: {map.Hero.Health}  ({map.Hero.X}, {map.Hero.Y})");
+            foreach (var message in log)
+            {
+                Console.WriteLine(message);
+            }
+            while (log.Count > 30) log.RemoveAt(0);
         }
     }
 }

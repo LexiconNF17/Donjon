@@ -1,23 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Donjon.Entities
 {
     class Monster : Creature
     {
-        private Monster(string symbol, ConsoleColor color)
-            : base(symbol, color) { }
+        private Monster(string name, string symbol, ConsoleColor color)
+            : base(name, symbol, color) { }
 
-        static Monster Troll()
+        public static Monster Troll()
         {
-            return new Monster("T", ConsoleColor.Green);
+            return new Monster("Troll", "T", ConsoleColor.Green) {
+                Health = 3,
+                Damage = 1
+            };
         }
-        static Monster Goblin()
+        public static Monster Goblin()
         {
-            return new Monster("G", ConsoleColor.Green);
+            return new Monster("Goblin", "G", ConsoleColor.Green) {
+                Health = 2,
+                Damage = 1
+            };
         }
 
     }

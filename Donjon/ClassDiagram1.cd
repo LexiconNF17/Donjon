@@ -1,48 +1,68 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Donjon.Entities.Creature">
-    <Position X="2.25" Y="0.5" Width="1.5" />
+  <Class Name="Donjon.Entities.Creature" Collapsed="true">
+    <Position X="7.5" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAACAA=</HashCode>
+      <HashCode>AAAACACAAAAAAAAAAAAAAAQAAAAAAAAAAAAAgAAACAA=</HashCode>
       <FileName>Entities\Creature.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Donjon.Entities.Hero">
-    <Position X="3" Y="3.25" Width="1.5" />
+  <Class Name="Donjon.Entities.Hero" Collapsed="true">
+    <Position X="0.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
       <FileName>Entities\Hero.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Donjon.Entities.Item">
-    <Position X="7" Y="0.5" Width="1.5" />
+  <Class Name="Donjon.Entities.Item" Collapsed="true">
+    <Position X="3.75" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\Item.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Donjon.Entities.Monster">
-    <Position X="1.25" Y="3.25" Width="1.5" />
+  <Class Name="Donjon.Entities.Monster" Collapsed="true">
+    <Position X="3.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAABAAAAA=</HashCode>
       <FileName>Entities\Monster.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Donjon.Cell" BaseTypeListCollapsed="true">
-    <Position X="5.25" Y="0.75" Width="1.5" />
+  <Class Name="Donjon.Cell" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAgAAACAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAgAAgAAACAA=</HashCode>
       <FileName>Cell.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <ShowAsAssociation>
+      <Property Name="Item" />
+      <Property Name="Monster" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Donjon.Map">
-    <Position X="5.5" Y="3.75" Width="1.5" />
+  <Class Name="Donjon.Map" Collapsed="true">
+    <Position X="0.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAgRAQAAAAAACAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAgRAQABAAAACAAAAAAAAAAAIAAAAAAA=</HashCode>
       <FileName>Map.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Hero" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="cells" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Donjon.Game" Collapsed="true">
+    <Position X="1" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAKAQAwAAAAgAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Game.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="map" />
+    </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
