@@ -59,6 +59,26 @@ namespace Donjon
             Console.ForegroundColor = previousColor;
         }
 
+        internal void MoveMonsters()
+        {
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    if (cells[x, y].Monster != null) {
+                        var troll = cells[x, y].Monster as Troll;
+                        if (troll != null) {
+                            if (Hero.X == x || Hero.Y == y)
+                            {
+                                troll.SetTarget(x, y);
+                            }
+                        }
+                    }
+                }
+            
+            }
+        }
+
         internal void ClearDeadMonsters()
         {
             var deadCells = Cells
@@ -81,6 +101,27 @@ namespace Donjon
             //}
         }
 
+        internal void Pickup()
+        {
+            var cell = cells[Hero.X, Hero.Y];
+            if (cell.Item != null)
+            {
+                var pickuped = Hero.Backpack.Add(cell.Item);
+                if (pickuped)
+                {
+                    log.Add($"The {Hero.Name} picks up the {cell.Item.Name}");
+                    cell.Item = null;
+                }
+                else
+                {
+                    log.Add($"The {Hero.Name} couldn't pick up the {cell.Item.Name}");
+                }
+            }
+            else {
+                log.Add($"Nothing to pick up here");
+            }
+        }
+
         internal bool OutOfBounds(int x, int y)
         {
             return x < 0 || y < 0
@@ -97,6 +138,9 @@ namespace Donjon
             {
                 Hero.X = targetX;
                 Hero.Y = targetY;
+                if (cell.Item != null) {
+                    log.Add($"Here is a {cell.Item.Name}");
+                }
                 return true;
             }
             else

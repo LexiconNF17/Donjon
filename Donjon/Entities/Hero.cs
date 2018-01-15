@@ -13,6 +13,7 @@ namespace Donjon.Entities
         public Hero() : base("Hero", "☻", ConsoleColor.Cyan) {
             Damage = 1;
             Health = 5;
+            Backpack = new LimitedList<Item>(3);
         }
     }
 }
